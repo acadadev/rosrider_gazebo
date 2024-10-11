@@ -38,17 +38,8 @@ set(dependencies
   "tf2"
 )
 
-set(EXEC_NAME "rosrider_drive")
-
-add_executable(${EXEC_NAME} src/rosrider_drive.cpp)
-ament_target_dependencies(${EXEC_NAME} ${dependencies})
-
-install(TARGETS ${EXEC_NAME}
-  DESTINATION lib/${PROJECT_NAME}
-)
-
 install(DIRECTORY launch models rviz worlds
-  DESTINATION share/${PROJECT_NAME}/
+    DESTINATION share/${PROJECT_NAME}/
 )
 
 install(DIRECTORY include/
