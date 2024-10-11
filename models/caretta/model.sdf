@@ -269,7 +269,7 @@
           </scan>
           <range>
             <min>0.120000</min>
-            <max>3.5</max>
+            <max>9</max>
             <resolution>0.015000</resolution>
           </range>
           <noise>
@@ -434,11 +434,11 @@
       <max_wheel_acceleration>1.0</max_wheel_acceleration>
       <command_topic>cmd_vel</command_topic>
       <publish_odom>true</publish_odom>
-      <publish_odom_tf>false</publish_odom_tf>
+      <publish_odom_tf>false</publish_odom_tf> <!-- turn off for ekf or ukf -->
       <publish_wheel_tf>false</publish_wheel_tf>
       <odometry_topic>odom</odometry_topic>
       <odometry_frame>odom</odometry_frame>
-      <odometry_source>0</odometry_source> <!-- 0: encoder, 1: world -->
+      <odometry_source>1</odometry_source> <!-- 0: encoder, 1: world, world for ekf to run -->
       <covariance_x>0.01</covariance_x>
       <covariance_y>0.0</covariance_y>
       <covariance_yaw>0.1</covariance_yaw>
