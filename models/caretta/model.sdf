@@ -49,13 +49,13 @@
       <parent>base_link</parent>
       <child>wheel_left_link</child>
       <axis>
-        <xyz>0 1 0</xyz>
+        <xyz>0 0 1</xyz>
       </axis>
     </joint>
     <link name="wheel_left_link">
-      <pose>0 0.08 0.03425 0 0 0</pose>
+      <pose>0 0.08 0.03425 -1.57 0 0</pose>
       <inertial>
-        <pose>0 0 0 -1.57 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <inertia>
           <ixx>2.29346485819975e-5</ixx>
           <ixy>0</ixy>
@@ -67,7 +67,7 @@
         <mass>0.06</mass>
       </inertial>
       <collision name="wheel_left_collision">
-        <pose>0 0 0 -1.57 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <cylinder>
             <radius>0.03475</radius>
@@ -111,13 +111,13 @@
       <parent>base_link</parent>
       <child>wheel_right_link</child>
       <axis>
-        <xyz>0 1 0</xyz>
+        <xyz>0 0 1</xyz>
       </axis>
     </joint>
     <link name="wheel_right_link">
-      <pose>0 -0.08 0.03425 0 0 0</pose>
+      <pose>0 -0.08 0.03425 -1.57 0 0</pose>
       <inertial>
-        <pose>0 0 0 -1.57 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <inertia>
           <ixx>2.29346485819975e-5</ixx>
           <ixy>0</ixy>
@@ -129,7 +129,7 @@
         <mass>0.06</mass>
       </inertial>
       <collision name="wheel_right_collision">
-        <pose>0 0 0 -1.57 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <cylinder>
             <radius>0.03475</radius>
@@ -425,7 +425,7 @@
       <ros>
         <!-- <namespace></namespace> -->
       </ros>
-      <update_rate>10</update_rate>
+      <update_rate>30</update_rate>
       <left_joint>wheel_left_joint</left_joint>
       <right_joint>wheel_right_joint</right_joint>
       <wheel_separation>0.16</wheel_separation>
@@ -435,7 +435,7 @@
       <command_topic>cmd_vel</command_topic>
       <publish_odom>true</publish_odom>
       <publish_odom_tf>false</publish_odom_tf> <!-- turn off for ekf or ukf -->
-      <publish_wheel_tf>false</publish_wheel_tf> <!-- TODO -->
+      <publish_wheel_tf>false</publish_wheel_tf> <!-- keep turned off, produces wrong result -->
       <odometry_topic>odom</odometry_topic>
       <odometry_frame>odom</odometry_frame>
       <odometry_source>0</odometry_source> <!-- 0: encoder, 1: world, world for ekf to run -->
@@ -444,12 +444,12 @@
       <covariance_yaw>0.1</covariance_yaw>
       <robot_base_frame>base_footprint</robot_base_frame>
     </plugin>
-    <plugin name="caretta_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
+    <plugin name="sorcerer_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
       <ros>
         <!-- <namespace></namespace> -->
         <remapping>~/out:=joint_states</remapping>
       </ros>
-      <update_rate>10</update_rate>
+      <update_rate>60</update_rate> <!-- keep twice the speed of odom for better vis -->
       <joint_name>wheel_left_joint</joint_name>
       <joint_name>wheel_right_joint</joint_name>
     </plugin>

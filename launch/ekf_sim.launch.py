@@ -65,6 +65,11 @@ def generate_launch_description():
         launch_arguments={'use_sim_time': use_sim_time}.items()
     )
 
+    '''
+    
+    # TODO: use local config file
+    # TODO: search for other joy_launch and remove
+    
     joy_launch_dir = os.path.join(get_package_share_directory('teleop_twist_joy'), 'launch')
     joy_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -72,6 +77,8 @@ def generate_launch_description():
         ),
         launch_arguments={'joy_config': 'f710'}.items()
     )
+    
+    '''
 
     ld = LaunchDescription()
 
@@ -81,6 +88,6 @@ def generate_launch_description():
     ld.add_action(spawn_robot_cmd)
     ld.add_action(ekf_cmd)
     ld.add_action(rviz_cmd)
-    ld.add_action(joy_cmd)
+    # ld.add_action(joy_cmd)
 
     return ld
