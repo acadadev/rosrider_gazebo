@@ -5,3 +5,4 @@
 
 - in ekf simulation, add a third odometry, based on world
 - initial values for imus in gazebo not set
+- wheel orientations wrong in rviz explore
